@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>space-invaders</title>
+</head>
+
+<body onkeydown="onKeyDown(event)" onload="onInit()">
+    <h1>Space Invaders</h1>
+    <h2>Score: <span>0</span></h2>
+
+    <table class="game-container">
+        <tbody class="game-board"></tbody>
+    </table>
+
+    <script src="js/utils.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/alien.js"></script>
+</body>
+
+</html>
