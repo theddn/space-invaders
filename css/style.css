@@ -1,6 +1,11 @@
 body {
-    background-color: black;
+    /* background-color: black; */
     text-align: center;
+    background: url('../img/night_stars03.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 h1,
@@ -9,21 +14,17 @@ h2 {
 }
 
 .game-container {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     border: 1px solid rgb(19, 191, 88);
-
-    background-image: url('../img/night_stars.jpg');
-    background-size: cover;
 }
 
 .game-board .SKY {
-    width: 40px;
-    height: 40px;
-    text-align: center;
+    margin: auto;
+    width: 45px;
+    height: 45px;
 }
 
 .SKY img {
     width: 40px;
-    height: auto;
+    transition: 1ms;
 }

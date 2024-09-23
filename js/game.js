@@ -18,6 +18,7 @@ var gBoard
 var gGame = {
     isOn: false,
     alienCount: 0,
+    score:0,
 }
 
 function onInit() {
@@ -25,7 +26,7 @@ function onInit() {
     createHero(gBoard)
     createAliens(gBoard)
     renderBoard(gBoard)
-    // console.log(gBoard)
+    console.log(gBoard)
 }
 
 // Matrix of cell objects. e.g.: {type: SKY, gameObject: ALIEN}
@@ -70,4 +71,13 @@ function updateCell(pos, gameObject = null) {
     gBoard[pos.i][pos.j].gameObject = gameObject
     var elCell = getElCell(pos)
     elCell.innerHTML = gameObject || ''
+}
+
+function updateScore(diff) {
+    const elScore = document.querySelector('h2 span')
+
+    gGame.score += diff
+    
+    elScore.innerText = gGame.score
+
 }
