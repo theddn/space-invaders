@@ -1,5 +1,7 @@
+* {
+    box-sizing: border-box;
+}
 body {
-    /* background-color: black; */
     text-align: center;
     background: url('../img/night_stars03.jpg');
     background-size: cover;
@@ -19,12 +21,51 @@ h2 {
 }
 
 .game-board .SKY {
-    margin: auto;
-    width: 45px;
-    height: 45px;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
 }
 
 .SKY img {
     width: 40px;
     transition: 1ms;
+}
+
+.modal {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgb(19, 191, 88);
+    font: 16px;
+}
+
+.modal button {
+    background: linear-gradient(#464d55, #35292e);
+    color: #fff;
+    border-radius: 8px;
+    border-width: 0;
+    box-shadow: 0 10px 20px rgb(0, 0, 0, 0.1), 0 3px 6px rgb(0, 0, 0, 0.05);
+    padding: 0 25px;
+    width: auto;
+    height: 50px;
+    line-height: 50px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+    float: middle;
+    transition: all 150ms;
+}
+
+.modal button:hover {
+    box-shadow: rgb(0, 0, 0, 0.2) 0 2px 8px;
+    opacity: 0.85;
+}
+.modal:active {
+    outline: 0;
+}
+.hide {
+    display: none;
 }

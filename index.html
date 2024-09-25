@@ -8,13 +8,18 @@
     <title>space-invaders</title>
 </head>
 
-<body onkeydown="onKeyDown(event)" onload="onInit()">
+<body onload="onInit()" onkeydown="onKeyDown(event)">
     <h1>Space Invaders</h1>
     <h2>Score: <span>0</span></h2>
 
     <table class="game-container">
         <tbody class="game-board"></tbody>
     </table>
+
+    <div hidden class="modal">
+        <h2>Victory</h2>
+        <button onclick="onInit()">play again</button>
+    </div>
 
     <script src="js/utils.js"></script>
     <script src="js/game.js"></script>

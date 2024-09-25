@@ -15,18 +15,21 @@ const LASER = '<img src="img/laser.png">'
 // const LASER = '⤊'
 
 var gBoard
-var gGame = {
+const gGame = {
     isOn: false,
     alienCount: 0,
-    score:0,
+    score: 0,
 }
 
 function onInit() {
     gBoard = createBoard()
+
     createHero(gBoard)
     createAliens(gBoard)
     renderBoard(gBoard)
-    console.log(gBoard)
+
+    gGame.isOn = false
+    onCloseModal()
 }
 
 // Matrix of cell objects. e.g.: {type: SKY, gameObject: ALIEN}
@@ -46,7 +49,7 @@ function renderBoard(board) {
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
-            const currCell = board[i][j]
+            var currCell = board[i][j]
             var className = currCell.type
             strHTML += `<td
             class="${className}"
@@ -62,9 +65,13 @@ function renderBoard(board) {
 // Returns a new cell object. e.g.: {type: SKY, gameObject: ALIEN}
 function createCell(type = SKY, gameObject = null) {
     return {
-        type,
-        gameObject,
+        type: SKY,
+        gameObject: gameObject,
     }
+}
+
+function getElCell(pos) {
+    return document.querySelector(`[data-i='${pos.i}'][data-j='${pos.j}']`)
 }
 
 function updateCell(pos, gameObject = null) {
@@ -75,9 +82,24 @@ function updateCell(pos, gameObject = null) {
 
 function updateScore(diff) {
     const elScore = document.querySelector('h2 span')
-
     gGame.score += diff
-    
     elScore.innerText = gGame.score
+}
 
+function gameOver() {
+    if (gGame.alienCount === 0) {
+        clearInterval(gLaserInterval)
+        console.log('Game Over')
+        gGame.isOn = false
+        onOpenModal()
+    }
+}
+
+function onOpenModal() {
+    const elModal = document.querySelector('.modal')
+    elModal.hidden = false
+}
+
+function onCloseModal() {
+    document.querySelector('.modal').hidden = true
 }
