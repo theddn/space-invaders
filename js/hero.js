@@ -4,6 +4,7 @@ const LASER_SPEED = 80
 var gHero
 var gLaserInterval
 var gLaserSetTimeOut
+ var glaserPos
 
 function createHero(board) {
     gHero = {
@@ -24,6 +25,10 @@ function onKeyDown(ev) {
             break
         case 'Space':
             onShoot()
+            break
+        case 'n':
+            if (gHero.isShoot) blowCounts(pos, board)
+
             break
 
         default:
@@ -64,9 +69,24 @@ function onShoot() {
         }
         if (gBoard[laserPos.i][laserPos.j].gameObject === ALIEN) {
             handleAlienHit(laserPos)
+
             gHero.isShoot = false
             clearInterval(gLaserInterval)
         }
         setBlinkLaser(laserPos)
+        // glaserPos = laserPos
     }, LASER_SPEED)
 }
+
+// function blowCounts(pos, board) {
+//     var AroundCount = 0
+
+//     for (var i = pos.i - 1; i <= pos.i + 1; i++) {
+//         if (i < 0 || i >= board.length) continue
+//         for (var j = pos.j - 1; j <= pos.j + 1; j++) {
+//             if (j < 0 || j >= board[i].length) continue
+//             if (i === pos.i && j === pos.j) continue
+//             if (board[i][j].gameObject === ALIEN) AroundCount++
+//         }
+//     }
+// }

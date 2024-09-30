@@ -1,11 +1,11 @@
 'use strict'
 
 const BOARD_SIZE = 14
-const ALIEN_ROW_LENGTH = 8
-const ALIEN_ROW_COUNT = 3
+var ALIEN_ROW_LENGTH = 8
+var ALIEN_ROW_COUNT = 3
 
 const SKY = 'SKY'
-
+const EMPTY = ' '
 const HERO = '<img src="img/hero.png">'
 const ALIEN = '<img src="img/alien03.png">'
 const LASER = '<img src="img/laser.png">'
@@ -18,22 +18,22 @@ const gGame = {
 }
 
 function onInit() {
-    gBoard = createBoard()
-    createHero(gBoard)
-    createAliens(gBoard)
-    renderBoard(gBoard)
     gGame.isOn = false
+    gBoard = createBoard()
+    createAliens(gBoard)
+    createHero(gBoard)
+    renderBoard(gBoard)
     onCloseModal()
-
-    gIntervalAliens = setInterval(moveAlien, 200)
+    // gIntervalAliens = setInterval(moveAlien, 1000)
 }
 
-
 function createBoard() {
-    const board = createMat(BOARD_SIZE, BOARD_SIZE)
+    const size = BOARD_SIZE
+    const board = []
 
-    for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[i].length; j++) {
+    for (var i = 0; i < size; i++) {
+        board.push([])
+        for (var j = 0; j < size; j++) {
             board[i][j] = { type: SKY, gameObject: '' }
         }
     }
@@ -45,24 +45,18 @@ function renderBoard(board) {
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
-            var currCell = board[i][j]
-            var className = currCell.type
-            strHTML += `<td
-            class="${className}"
-                    data-i="${i}" data-j="${j}">${currCell.gameObject}</td>`
+            const currCell = board[i][j]
+            const cellType = currCell.type
+
+            strHTML += `<td data-i="${i}" data-j="${j}"
+             class="${cellType}">
+            ${currCell.gameObject}</td>`
         }
         strHTML += '</tr>'
     }
 
     const elBoard = document.querySelector('.game-board')
     elBoard.innerHTML = strHTML
-}
-
-function createCell(type = SKY, gameObject = null) {
-    return {
-        type: SKY,
-        gameObject: gameObject,
-    }
 }
 
 function updateScore(diff) {

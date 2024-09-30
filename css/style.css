@@ -40,8 +40,8 @@ h2 {
     background-color: rgb(19, 191, 88);
     font: 16px;
 }
-
-.modal button {
+.modal,
+button {
     background: linear-gradient(#464d55, #35292e);
     color: #fff;
     border-radius: 8px;
@@ -63,9 +63,13 @@ h2 {
     box-shadow: rgb(0, 0, 0, 0.2) 0 2px 8px;
     opacity: 0.85;
 }
+button:active {
+    color: #3e8e41;
+}
 .modal:active {
     outline: 0;
 }
 .hide {
     display: none;
 }
+
